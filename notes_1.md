@@ -23,7 +23,7 @@ PHP code can be inserted inside HTML, in a `<?php ?>` tag:
 </p>
 ```
 
-This looks working like JS. However PHP run on the server, not the browser. This means I can access infos on the DB, custom build HTML before sending it and runing server side calculs and tasks.
+This looks working like JS. However PHP run on the server, not the browser. This means I can access infos on the DB, run server side calculs and tasks and custom build HTML before sending it and.
 
 ## Syntax
 
@@ -31,20 +31,24 @@ This looks working like JS. However PHP run on the server, not the browser. This
 
 `echo` outputs strings.
 
-`.` concantenate strings in the same way `+` does in JS: `echo '"Hello,"." "."world"."!";`
+`.` concantenate strings in the same way `+` does in JS: `echo '"Hello,"." "."world"."!";`. Looks like `,` works too (to confirm).
 
 `echo 3 * 2;` works too.
+
+`print` looks to do the same job (to confirm)
 
 
 ### Variables
 
 All variables starts with `$`:
-```
+```php
 $myName = "Camille";
 $myAge = 28;
 
-echo $myName;
-echo $myAge;
+echo $myName; // Camille
+echo $myAge; // 28
+
+unset($myAge) // remove the element
 ```
 
 ### Comparisons
@@ -59,7 +63,7 @@ echo $myAge;
 <?php
   $age = 21;
   if( $age > 18 ) {
-    echo "you can vote"." (but not Marine please)";
+    echo "you can vote"." (but not Marine)";
   }
   elseif("condition" == true){
     echo "yes";
@@ -87,32 +91,49 @@ endswitch;
 
 Swhitchs works like in JS:
 ```php
-<?php
-  $myNum = 2
+$myNum = 2
   
-  switch ($myNum) {
-    case 0:
-      echo 'The value is 0';
-      break;
-    case 1:
-      echo 'The value is 1';
-      break;
-    case 2:
-      echo 'The value is 2';
-      break;
-    default:
-      echo "The value isn't 0, 1 or 2";
-  }
-?>
+switch ($myNum) {
+  case 0:
+    echo 'The value is 0';
+    break;
+  case 1:
+    echo 'The value is 1';
+    break;
+  case 2:
+    echo 'The value is 2';
+    break;
+  default:
+    echo "The value isn't 0, 1 or 2";
+}
 ```
 
 And I can "fall through":
 ```php
-  case 1:
-  case 2:
-  case 3:
-    echo "$i is 1, 2 or 3";
-    break;
+case 1:
+case 2:
+case 3:
+  echo "$i is 1, 2 or 3";
+  break;
+```
+
+### Arrays
+
+Create an array with `$myArray = array()`.
+Access it with `[]` or `{}`.
+
+```php
+$array = array("Egg", 783, "Tomato", "Beans", 0);
+
+echo $array[0]; // Egg
+echo $array{0}; // Egg
+
+$array[1] = "another value" // modify an array directly
+
+$bar = "foo";
+$array[1] = $bar // we can assign a variable (do we assign the variable reference or the variable value ?)
+
+unset($array[1]) // remove the element
 ```
 
 

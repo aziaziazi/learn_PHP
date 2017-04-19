@@ -1022,17 +1022,83 @@ body .markdown-body
 - Talk to databas<br />
 - Send and receive cookies<br />
 - Build dynamic webpages<br />
-- &hellip;</p>
+- &hellip;@@@</p>
 <p>PHP code can be inserted inside HTML, in a <code>&lt;?php ?&gt;</code> tag:</p>
 <pre><code class="php">// index.php
 &lt;p&gt;
   &lt;?php // PHP code goes inside this tag
-  $welcome = &quot;Hello World&quot;; // semicolon
+  $welcome = &quot;Hello World&quot;; // semicolon at the end of every statements
   echo $welcome;
   ?&gt;
 &lt;/p&gt;
 </code></pre>
 
 <p>This looks working like JS. However PHP run on the server, not the browser. This means I can access infos on the DB, custom build HTML before sending it and runing server side calculs and tasks.</p>
-<h2 id="php-syntax"><a name="user-content-php-syntax" href="#php-syntax" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>PHP Syntax</h2>
-<h3 id="echo"><code>Echo</code></h3></article></body></html>
+<h2 id="syntax"><a name="user-content-syntax" href="#syntax" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Syntax</h2>
+<h3 id="echo"><code>Echo</code></h3>
+<p><code>echo</code> outputs strings.</p>
+<p><code>.</code> concantenate strings in the same way <code>+</code> does in JS: <code>echo '"Hello,"." "."world"."!";</code></p>
+<p><code>echo 3 * 2;</code> works too.</p>
+<h3 id="variables"><a name="user-content-variables" href="#variables" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Variables</h3>
+<p>All variables starts with <code>$</code>:<br />
+<pre><code>$myName = &quot;Camille&quot;;
+$myAge = 28;
+
+echo $myName;
+echo $myAge;
+</code></pre></p>
+<h3 id="comparisons"><a name="user-content-comparisons" href="#comparisons" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Comparisons</h3>
+<p><code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>,<code>=&gt;</code>,<code>==</code>,<code>!=</code></p>
+<p><code>||</code></p>
+<h3 id="if-statements"><a name="user-content-if-statements" href="#if-statements" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>If statements</h3>
+<pre><code class="php">&lt;?php
+  $age = 21;
+  if( $age &gt; 18 ) {
+    echo &quot;you can vote&quot;.&quot; (but not Marine please)&quot;;
+  }
+  elseif(&quot;condition&quot; == true){
+    echo &quot;yes&quot;;
+  }
+  else {
+    echo &quot;should you ?&quot;;
+  }
+?&gt;
+</code></pre>
+
+<h3 id="switch-statements"><a name="user-content-switch-statements" href="#switch-statements" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Switch statements</h3>
+<p>There&rsquo;s two ways to create a swhitch:<br />
+<pre><code class="php">switch ($i) {
+  //case...
+}
+</code></pre></p>
+<pre><code class="php">switch ($i):
+  //case...
+endswitch;
+</code></pre>
+
+<p>Swhitchs works like in JS:<br />
+<pre><code class="php">&lt;?php
+  $myNum = 2
+
+  switch ($myNum) {
+    case 0:
+      echo 'The value is 0';
+      break;
+    case 1:
+      echo 'The value is 1';
+      break;
+    case 2:
+      echo 'The value is 2';
+      break;
+    default:
+      echo &quot;The value isn't 0, 1 or 2&quot;;
+  }
+?&gt;
+</code></pre></p>
+<p>And I can &ldquo;fall through&rdquo;:<br />
+<pre><code class="php">  case 1:
+  case 2:
+  case 3:
+    echo &quot;$i is 1, 2 or 3&quot;;
+    break;
+</code></pre></p></article></body></html>
