@@ -27,7 +27,7 @@ This looks working like JS. However PHP run on the server, not the browser. This
 
 ## Syntax
 
-### `Echo`
+### Echo
 
 `echo` outputs strings.
 
