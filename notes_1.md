@@ -26,7 +26,6 @@ PHP code can be inserted inside HTML, in a `<?php ?>` tag:
 This looks working like JS. However PHP run on the server, not the browser. This means I can access infos on the DB, run server side calculs and tasks and custom build HTML before sending it.
 
 ## Basic syntax
-
 ### Echo
 
 `echo` outputs strings.
@@ -241,8 +240,9 @@ echo $favBeers[$count-1].$separation;
 echo ". You should try them!";
 ```
 
-## Build-in functions
-### String functions
+## Functions
+### Build-in functions
+#### String functions
 
 ```php
 // returns the lenght of a string.
@@ -263,8 +263,8 @@ strpos('Camille', 'i'); // 3
 strpos('Camille', 'x'); // false
 ```
 
-### Math functions
-#### round
+#### Math functions
+##### round
 
 ```php
 // M_PI is a php constant equal to pi.
@@ -276,7 +276,7 @@ round(M_PI);
 round(M_PI, 3);
 ```
 
-#### rand
+##### rand
 
 ```php
 // returns an integer between 0 and getrandmax().
@@ -286,7 +286,7 @@ rand();
 rand(1,10);
 ```
 
-### Array functions
+#### Array functions
 
 ```php
 $fav_bands = array();
@@ -312,7 +312,7 @@ rsort($theArray); // reverse-sort the array.
 join(" and ", $theArray);
 ```
 
-## Create functions
+### Create functions
 
 ```php
 // define
@@ -324,4 +324,122 @@ echo aboutMe("Camille", 28);
 ```
 
 ## OOP
+### Class
+Create a class with `class Myclass`.
+Create a property of this class with `public $property`.
+Create a method of this class with `public function method`.
+
+Create a new instance with `$instance = new Myclass()`.
+Access a property of an instance with `$instance->Property`
+
+```php
+class Classname { // create the class
+  public $property = "value"; // create a property
+  public function myMethod(){ // create a method
+    return "the result";
+  };
+};
+
+$obj1 = new Classname(); // create an instance
+echo $obj1->property // access a property. Here, returns "value"
+```
+
+### Constructor
+To assign values to instances properties, we use the **constructor**.
+
+Use the keyword `__construct` to create the constructor method. Add it some arguments in the parentesis.
+Assign the properties like this : `$this->prop1 = $prop1`.
+
+```php
+class Classname {
+  public function __construct($prop1, $prop2){
+    $this->prop1 = $prop1;
+    $this->prop2 = $prop2;
+  }
+}
+```
+
+### Build-in methods
+
+Build-in functions that tells informations of a class/object:
+
+- `is_a()` Find out if an object is an instance of a class
+- `property_exists()` Find out if an object has a given property
+- `method_exists()` Find out if an object has a given method
+
+All three takes two arguments: the **object we're checking** and **class**, **property** name or **method** name as a string
+ 
+```php
+class Cat {
+  public function __construct($name){
+    $this->name = $name;
+  }
+  public function meow(){
+    return "Meow meow";
+  }
+  public $isAlive = true;
+  public $numLegs = 4;
+};
+
+$cat1 = new Cat("CodeCat");
+
+echo $cat1->meow()
+
+echo is_a($cat1, "Cat") // True
+echo property_exists($cat1, "name") // True
+echo method_exists($cat1, "meow") // True
+```
+
+### Inheritance
+
+Classes can inherits form other classes with the `extends` keyword.
+Parents are called **superclass**.
+Childs are called **subclass**.
+
+To override properties and methods, just redefine them in the subclass.
+
+```php
+class Shape {
+  public $isGeometric = true;
+  public $sides = true;
+}
+
+class Square extends Shape { // Extends Square from Shape
+  public $sides = 4 // redefine sides
+}
+
+$mySquare = new Square;
+$mySquare->isGeometric // true
+```
+
+ If I want to prevent a property/method to be overrided, I can use the `final` keyword just before `public`:
+
+ ```php
+ final public $myPropery = "can't be overrided!" // Will product an error if I try to redefine in another class
+ ```
+
+### Class Constant
+PHP let me set **constants** on a class-by-class basis and each one has his own **scope** (context in which it can be used). Constants **do not** start with `$` but takes `const` as a prefix.
+I access a class constant with the scope resolution operator `::`.
+
+```php
+class Immortal {
+  const alive = true;
+}
+
+echo Immortal::alive; // true
+```
+
+### Static
+The keyword `static` and the scope resolution operator `::` allow me to declare and access class properties and methods without creating instances.
+
+```php
+class Person {
+  public static $isAlive = true;
+}
+
+echo Person::$isAlive; // true
+```
+
+
 *to continue...*
