@@ -1,7 +1,6 @@
 This is my notes through [Codecademy PHP Course](https://www.codecademy.com/learn/php)
 
 # Introduction to PHP
-
 ## Meet PHP
 
 PHP can do all sorts of things:
@@ -136,7 +135,6 @@ unset($array[1]) // remove the element
 ```
 
 ### Loops
-
 #### For
 
 ```php
@@ -440,6 +438,63 @@ class Person {
 
 echo Person::$isAlive; // true
 ```
+
+## Advenced Arrays
+### Associative Arrays
+
+An associative array makes use of `key => value` pairs. In some languages there's **arrays** and **maps**. PHP treats both as the same.
+
+```php
+$car = array(
+  2012,
+  'blue',
+  5,
+  'Toyota'
+);
+
+$assocCar = array(
+  'year' => 2012,
+  'colour' => 'blue',
+  'doors' => 5,
+  'brand' => 'Toyota'
+);
+
+echo "Car's brand : " . $car[3]; // Toyota
+echo "Car's brand : " . $assocCar["brand"]; // Toyota
+
+foreach($assocCar as $carProp => $value){ // loop throuth an associative array
+  echo $carProp. ": " . $value;
+  echo  "<br />";
+}
+// year: 2012
+// colour: blue
+// doors: 5
+// brand: Toyota
+```
+
+### Multidimensional Arrays
+
+Not only I can store booleans, intergers and strings in arrays, I can also store other arrays!
+
+```php
+$multiDimArray = array(
+  'first dimension' => array(93, 139, 003),
+  'second dimension' => array(true, false, true),
+  'third dimension' => array('93', '139', '003'),
+)
+
+echo $multiDimArray['second dimension'][2] // true
+
+// I can use `foreach`to easely loop through thoses arrays:
+foreach($multiDimArray as $dim){
+  echo $dim
+}
+// array(93, 139, 003)
+// array(true, false, true)
+// array('93', '139', '003')
+```
+
+
 
 
 *to continue...*
